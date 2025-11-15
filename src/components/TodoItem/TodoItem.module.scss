@@ -1,0 +1,78 @@
+
+.block {
+     display: flex;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+}
+
+.text {
+      flex: 1;
+        text-decoration: none;
+        color: #000;
+}
+
+.textActive {
+    text-decoration: line-through ;
+    color: #888;
+}
+
+.checkbox {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      border: 2px solid #22c55e;
+      margin-right: 16px;
+      cursor: pointer;
+      background:#22c55e;
+}
+
+.delete {
+      background: #ff4444;
+          color: white;
+          border: none;
+          padding: 5px 10px;
+          border-radius: 3px;
+          cursor: pointer;
+}
+
+.date {
+    margin-right: 20px;
+}
+
+.saveButton {
+    background: green;
+      border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+    
+    margin-right: 5px;
+
+}
+
+.cancelButton {
+      background: #ef4444; 
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: bold ;
+     
+
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.edit {
+    display: flex;
+    cursor: pointer;
+}

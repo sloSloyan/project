@@ -1,0 +1,33 @@
+.mainBlock {
+    max-width: 600px;
+     margin: 0 auto;
+      padding: 20px; 
+}
+
+.title {
+    text-align: center;
+     color: #333;
+}
+
+.selectedBlock {
+    display: flex;
+     gap: 12px;
+      margin-bottom: 24px;
+       justify-content: center; 
+}
+
+.date {
+     padding: 8px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+}
+
+.reset {
+     padding: 8px 16px;
+            background: #6b7280;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+}

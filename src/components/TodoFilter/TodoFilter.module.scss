@@ -1,0 +1,20 @@
+.block {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+ }
+
+.item {
+      margin: 0 5px;
+      padding: 5px 10px;
+      background:  #f8f9fa;
+      color: #333;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      cursor: pointer;
+}
+
+.itemActive {
+    color: white;
+    background:  #007bff;
+}
