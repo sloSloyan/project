@@ -2,3 +2,28 @@
     text-align: center;
      color: #888;
 }
+
+.table {
+    margin-top: 50px;
+}
+
+.icon {
+    width: 20px;
+    cursor: pointer;
+}
+
+.dateBlock {
+    display: flex;
+
+    span {
+        margin-right: 10px;
+    }
+}
+
+.nameBlock {
+      display: flex;
+
+    span {
+        margin-left: 10px;
+    }
+}

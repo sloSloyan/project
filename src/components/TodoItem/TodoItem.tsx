@@ -4,6 +4,7 @@ import { Todo } from '../../types/todo';
 import styles from './TodoItem.module.scss';
 import cn from 'classnames';
 import pencilIcon from './icons/pencil.png';
+import deleteIcon from './icons/delete.png';
 
 
 
@@ -45,60 +46,101 @@ const handleCancel = () => {
   };
  
   return (
-    <div className={styles.block}>
+//     <div className={styles.block}>
      
-           <span 
-      className={cn(styles.text, {
-        [styles.textActive]: todo.completed
-      })}>
-        {todo.text}
-      </span>
+    //        <span 
+    //   className={cn(styles.text, {
+    //     [styles.textActive]: todo.completed
+    //   })}>
+    //     {todo.text}
+    //   </span>
       
       
-      <span className={styles.date}>
-    {formatDate(todo.dueDate!)} 
-</span>
-      {isEditing ? ( <>
-         <input
+//       <span className={styles.date}>
+//     {formatDate(todo.dueDate!)} 
+// </span>
+//       {isEditing ? ( <>
+        //  <input
+        //   className={styles.editInput}
+        //   value={editText}
+        //   onChange={(e) => setEditText(e.target.value)}
+        //   onKeyDown={(e) => e.key === 'Enter' && handleSave()}
+        // />
+        //   <button onClick={handleSave} className={styles.saveButton}>✓</button>
+        //   <button onClick={handleCancel} className={styles.cancelButton}>✕</button>
+//         </>) : (
+//             <>
+            // <span className={styles.edit} onClick={handleEdit}> 
+            //     <img className={styles.icon} src={pencilIcon} alt="" />
+            // </span>
+    //              <input
+    //     type="checkbox"
+    //     checked={todo.completed}
+    //     onChange={() => onToggle(todo.id)}
+    //     className={styles.checkbox}
+    //   />
+//       <button
+//         onClick={() => onDelete(todo.id)}
+//         className={styles.delete}
+//       >
+//         Удалить
+//       </button>
+//             </>
+//         )}
+//     </div>
+<div className={styles.block}>
+    <tr className={styles.row}>
+         <td>
+            {isEditing ? (
+                         <input
           className={styles.editInput}
           value={editText}
           onChange={(e) => setEditText(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSave()}
         />
-          <button onClick={handleSave} className={styles.saveButton}>✓</button>
+            ) : (
+                <>
+                              <span 
+      className={cn(styles.text, {
+        [styles.textActive]: todo.completed
+      })}>
+        {todo.text}
+      </span>
+                </>
+            )}
+         
+            </td>
+  <td>
+                    <input
+        type="checkbox"
+        checked={todo.completed}
+        onChange={() => onToggle(todo.id)}
+        className={styles.checkbox}
+      />
+    </td>
+  <td>       <span className={styles.date}>
+    {formatDate(todo.dueDate!)} 
+</span> </td>
+  <td>
+    {isEditing ? (
+        <>
+                  <button onClick={handleSave} className={styles.saveButton}>✓</button>
           <button onClick={handleCancel} className={styles.cancelButton}>✕</button>
-        </>) : (
-            <>
-            <span className={styles.edit} onClick={handleEdit}> 
+        </>
+    ) : (
+        <div className={styles.action}>
+              <span className={styles.edit} onClick={handleEdit}> 
                 <img className={styles.icon} src={pencilIcon} alt="" />
             </span>
-                 <input
-        type="checkbox"
-        checked={todo.completed}
-        onChange={() => onToggle(todo.id)}
-        className={styles.checkbox}
-      />
-      <button
-        onClick={() => onDelete(todo.id)}
-        className={styles.delete}
-      >
-        Удалить
-      </button>
-            </>
-        )}
-       {/* <input
-        type="checkbox"
-        checked={todo.completed}
-        onChange={() => onToggle(todo.id)}
-        className={styles.checkbox}
-      />
-      <button
-        onClick={() => onDelete(todo.id)}
-        className={styles.delete}
-      >
-        Удалить
-      </button> */}
-    </div>
+           <span onClick={() => onDelete(todo.id)}>
+              <img  className={styles.icon} src={deleteIcon} alt="" />
+           </span>
+        </div>
+    )}
+ 
+    </td>
+</tr>
+</div>
   );
 };
 

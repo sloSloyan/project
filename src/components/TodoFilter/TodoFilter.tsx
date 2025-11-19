@@ -7,9 +7,10 @@ import cn from 'classnames';
 interface TodoFilterProps {
   currentFilter: FilterType;
   onFilterChange: (filter: FilterType) => void;
+
 }
 
-const TodoFilter: React.FC<TodoFilterProps> = ({ currentFilter, onFilterChange }) => {
+const TodoFilter: React.FC<TodoFilterProps> = ({ currentFilter, onFilterChange  }) => {
   const filters: { key: FilterType; label: string }[] = [
     { key: 'all', label: 'Все' },
     { key: 'active', label: 'Активные' },
@@ -32,6 +33,7 @@ const TodoFilter: React.FC<TodoFilterProps> = ({ currentFilter, onFilterChange }
           {filter.label}
         </div>
       ))}
+  
     </div>
   );
 };

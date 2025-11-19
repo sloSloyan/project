@@ -22,9 +22,11 @@
       height: 24px;
       border-radius: 6px;
       border: 2px solid #22c55e;
-      margin-right: 16px;
+    //   margin-right: 16px;
       cursor: pointer;
       background:#22c55e;
+          width: 65px;
+    text-align: right;
 }
 
 .delete {
@@ -37,7 +39,7 @@
 }
 
 .date {
-    margin-right: 20px;
+    // margin-right: 20px;
 }
 
 .saveButton {
@@ -70,9 +72,34 @@
 .icon {
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 .edit {
     display: flex;
     cursor: pointer;
+    margin-right: 10px;
 }
+
+.action {
+    display: flex;
+}
+
+table {
+    width: 100%;
+
+    td {
+        width: 70px;
+    }
+
+    tr {
+        display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+}
+
+
+
+
+

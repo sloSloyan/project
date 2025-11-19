@@ -25,6 +25,7 @@ function App() {
     setTodos([...todos, newTodo]);
   };
 
+
   // Функция для переключения статуса задачи
   const toggleTodo = (id: string) => {
     setTodos(todos.map(todo =>
@@ -57,6 +58,23 @@ function App() {
     }
   });
 
+  const [sortByDate, setSortByDate] = useState<'date' | 'none'>('none');
+const [sortByName, setSortByName] = useState<'name' | 'none'>('none');
+
+  const [sortBy, setSortBy] = useState<'date' | 'none' | 'name'>('none');
+
+
+// ДОБАВЛЯЕМ ФУНКЦИЮ СОРТИРОВКИ ПЕРЕД filteredTodos
+const sortedAndFilteredTodos = filteredTodos.sort((a, b) => {
+  if (sortBy === 'date') {
+    return new Date(a.dueDate!).getTime() - new Date(b.dueDate!).getTime();
+  }
+    if (sortBy === 'name') {
+    return a.text.localeCompare(b.text);
+  }
+  return 0; // без сортировки
+});
+
   
 
   return (
@@ -87,10 +105,14 @@ function App() {
         />
         
         <TodoList 
-          todos={filteredTodos} 
+          todos={sortedAndFilteredTodos} 
           onToggle={toggleTodo} 
           onDelete={deleteTodo} 
           onEdit={editTodo}
+          sortBy={sortBy}
+          // setSortByDate={setSortByDate}
+          // setSortByName={setSortByName}
+          onSortChange={setSortBy}
         />
         
         <div style={{ marginTop: '20px', textAlign: 'center', color: '#666' }}>
