@@ -2,16 +2,82 @@ import React, { useState } from 'react';
 import TodoForm from './components/TodoForm/TodoForm';
 import TodoList from './components/TodoList/TodoList';
 import TodoFilter from './components/TodoFilter/TodoFilter';
+import Pagination from './components/Pagination/Pagination';
 import { Todo, FilterType } from './types/todo';
 import './App.css';
 import styles from './App.module.scss';
 
+  const mass = [
+    {
+  id: '1',
+  text: 'string',
+  completed: false,
+  dueDate: '',
+},
+  {
+  id: '2',
+  text: 'string',
+  completed: false,
+  dueDate: '',
+},
+  {
+  id: '3',
+  text: 'string',
+  completed: false,
+  dueDate: '',
+},
+  {
+  id: '4',
+  text: 'string',
+  completed: false,
+  dueDate: '',
+},
+  {
+  id: '5',
+  text: 'string',
+  completed: false,
+  dueDate: '',
+},
+  {
+  id: '6',
+  text: 'string',
+  completed: false,
+  dueDate: '',
+},
+  {
+  id: '7',
+  text: 'string',
+  completed: false,
+  dueDate: '',
+},
+  {
+  id: '8',
+  text: 'string',
+  completed: false,
+  dueDate: '',
+},
+  {
+  id: '9',
+  text: 'string',
+  completed: false,
+  dueDate: '',
+},
+  {
+  id: '10',
+  text: 'string',
+  completed: false,
+  dueDate: '',
+},
+   ]
+
 function App() {
   // Состояние для хранения списка задач
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Todo[]>(mass);
   // Состояние для текущего фильтра
   const [filter, setFilter] = useState<FilterType>('all');
    const [selectedDate, setSelectedDate] = useState('');
+
+
 
 
   // Функция для добавления новой задачи
@@ -75,6 +141,16 @@ const sortedAndFilteredTodos = filteredTodos.sort((a, b) => {
   return 0; // без сортировки
 });
 
+const [currentPage, setCurrentPage] = useState(1); // текущая страница
+const [tasksPerPage] = useState(5); // сколько задач на странице
+
+// Индекс последней задачи на странице
+const indexOfLastTask = currentPage * tasksPerPage;
+// Индекс первой задачи на странице  
+const indexOfFirstTask = indexOfLastTask - tasksPerPage;
+// Задачи для текущей страницы
+const currentTasks = sortedAndFilteredTodos.slice(indexOfFirstTask, indexOfLastTask);
+
   
 
   return (
@@ -105,7 +181,8 @@ const sortedAndFilteredTodos = filteredTodos.sort((a, b) => {
         />
         
         <TodoList 
-          todos={sortedAndFilteredTodos} 
+          // todos={sortedAndFilteredTodos} 
+          todos={currentTasks}
           onToggle={toggleTodo} 
           onDelete={deleteTodo} 
           onEdit={editTodo}
@@ -114,6 +191,13 @@ const sortedAndFilteredTodos = filteredTodos.sort((a, b) => {
           // setSortByName={setSortByName}
           onSortChange={setSortBy}
         />
+
+        <Pagination
+  tasksPerPage={tasksPerPage}
+  totalTasks={sortedAndFilteredTodos.length} // общее количество задач
+  currentPage={currentPage}
+  onPageChange={setCurrentPage}
+/>
         
         <div style={{ marginTop: '20px', textAlign: 'center', color: '#666' }}>
           Всего задач: {todos.length} | 
